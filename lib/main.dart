@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_up_ui/src/providers/auth_view_model.dart';
-import 'src/views/auth/login_page.dart'; // Import the login page
+import 'src/views/auth/login_page.dart';
+import 'package:logging/logging.dart';
+
+final Logger log = Logger('MyApp');
 
 void main() {
-  runApp(ChangeNotifierProvider(create: (context) => AuthViewModel(), child: MyApp()));
+  log.info("App Started");
+  runApp(ChangeNotifierProvider(create: (context) => AuthViewModel(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

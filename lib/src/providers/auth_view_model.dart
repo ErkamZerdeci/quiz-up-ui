@@ -16,4 +16,11 @@ class AuthViewModel extends ChangeNotifier {
     notifyListeners(); 
     return response;
   }
+
+//TODO delete this part
+  Future<Response<String>> test() async {
+    final response = await _authService.test();
+    notifyListeners();
+    return response;
+  }
 }
