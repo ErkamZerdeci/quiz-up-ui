@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_up_ui/src/models/user_modal.dart';
+import 'package:quiz_up_ui/src/models/response_modal.dart';
 import '../services/auth_service.dart';
 
 class AuthViewModel extends ChangeNotifier {
   final AuthService _authService = AuthService();
-  User? _user;
 
-  User? get user => _user;
-
-  Future<void> login(String email, String password) async {
-    _user = await _authService.login(email, password);
+  Future<Response<String>> login(String username, String password) async {
+    final response = await _authService.login(username, password);
     notifyListeners(); 
+    return response;
   }
 
-  Future<void> signup(String email, String username, String password) async {
-    _user = await _authService.signup(email, username, password);
-    notifyListeners(); // 
+  Future<Response<String>> signup(String email, String username, String password) async {
+    final response = await _authService.signup(email, username, password);
+    notifyListeners(); 
+    return response;
   }
 }

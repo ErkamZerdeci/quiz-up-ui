@@ -1,6 +1,6 @@
-class Response {
+class Response<T> {
   final int statusCode;
-  final Object? data;
+  final T? data;
 
   Response({required this.statusCode, this.data});
 }
