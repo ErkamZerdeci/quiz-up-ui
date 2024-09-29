@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_up_ui/src/views/test_page.dart';
 import '../../providers/auth_view_model.dart';
-import 'signup_page.dart'; // Import the signup page
+import 'signup_page.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -14,7 +13,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Login'), automaticallyImplyLeading: false),
       body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
@@ -54,8 +53,7 @@ class LoginPage extends StatelessWidget {
                         .login(
                             usernameController.text, passwordController.text);
                     if (response.statusCode == 200 && context.mounted) {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const TestPage()));
+                      Navigator.pushNamed(context, '/main-menu');
                     }
                   },
                   child: const Text('Login'),

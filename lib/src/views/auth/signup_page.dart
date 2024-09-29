@@ -63,9 +63,15 @@ class SignupPage extends StatelessWidget {
                 onPressed: () async {
                   final form = _formKey.currentState;
                   if (form != null && form.validate()) {
-                    await Provider.of<AuthViewModel>(context, listen: false)
-                        .signup(emailController.text, usernameController.text,
-                            passwordController.text);
+                    final response =
+                        await Provider.of<AuthViewModel>(context, listen: false)
+                            .signup(
+                                emailController.text,
+                                usernameController.text,
+                                passwordController.text);
+                    if (response.statusCode == 200 && context.mounted) {
+                      Navigator.pushNamed(context, '/main-menu');
+                    }
                   }
                 },
                 child: const Text('Sign Up'),
